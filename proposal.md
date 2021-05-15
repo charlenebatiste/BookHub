@@ -14,7 +14,11 @@ _Hint: if you see this, you're looking at it_ 😉
 
 `3` Wireframe for your app
 
+Main Page Wireframe
+
 ![Main Page Wireframe](/public/assets/mainpagewireframe.png)
+
+LogIn Page Wireframe
 
 ![LogIn Page Wireframe](/public/assets/loginwireframe.png)
 
