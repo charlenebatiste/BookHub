@@ -4,13 +4,31 @@
 
 `1` An application name / concept
 
+- Project name: BookHub
+- Concept: A full-stack application where book lovers can search books to add to their Bookshelf and join or create book clubs to interact with other users.
+
 `2` A repo for your project 2 (built from express_auth template)
 
-`3` Wireframe for your app - (Lucidchart)
+[My Repo](https://github.com/charlenebatiste/BookHub)
+_Hint: if you see this, you're looking at it_ 😉
+
+`3` Wireframe for your app
+
+![Main Page Wireframe](/public/assets/mainpagewireframe.png)
+
+![LogIn Page Wireframe](/public/assets/loginwireframe.png)
 
 `4` An ERD with two models (minimum) > User + 1 Resource (one to many) - (Lucidchart)
 
+![Database ERD](/public/assets/bookhub-ERD.png)
+
 `5` Create (3-5) User Stories for the base user experience - ( [Reference](https://revelry.co/resources/development/user-stories-that-dont-suck/) )
+
+- As a User I want to be able to compile a list of my favorite books, or books I want to read in one location.
+
+- As a User I also want to join book clubs to meet other users interested in the same genres/topics as me.
+
+-As a User I want to be able to add discussion posts and comment on other users' discussion posts.
 
 `6` Resource's Restful Routing table ( [Readme](https://romebell.gitbook.io/sei-412/node-express/00readme-1/01intro-to-express/00readme#restful-routing) )
 
