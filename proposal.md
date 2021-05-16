@@ -22,6 +22,10 @@ LogIn Page Wireframe
 
 ![LogIn Page Wireframe](/public/assets/loginwireframe.png)
 
+Sign Up Page Wireframe
+
+![signup Page Wireframe](/public/assets/signupwireframe.png)
+
 `4` An ERD with two models (minimum) > User + 1 Resource (one to many) - (Lucidchart)
 
 ![Database ERD](/public/assets/bookhub-ERD.png)
