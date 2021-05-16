@@ -37,3 +37,5 @@ LogIn Page Wireframe
 `6` Resource's Restful Routing table ( [Readme](https://romebell.gitbook.io/sei-412/node-express/00readme-1/01intro-to-express/00readme#restful-routing) )
 
 `7` Find API and test to see if you can get data ( _be able to print data in the console using Axios, Node-Fetch, and/or Postman_ )
+
+![Proof Of Fetch](/public/assets/proof-of-fetch.png)
