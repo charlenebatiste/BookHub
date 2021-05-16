@@ -32,7 +32,7 @@ LogIn Page Wireframe
 
 - As a User I also want to join book clubs to meet other users interested in the same genres/topics as me.
 
--As a User I want to be able to add discussion posts and comment on other users' discussion posts.
+- As a User I want to be able to add discussion posts and comment on other users' discussion posts.
 
 `6` Resource's Restful Routing table ( [Readme](https://romebell.gitbook.io/sei-412/node-express/00readme-1/01intro-to-express/00readme#restful-routing) )
 
