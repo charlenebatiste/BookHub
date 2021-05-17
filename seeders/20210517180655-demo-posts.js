@@ -24,7 +24,7 @@ const postData = [
   },
   {
     title: `Can ANYONE explain to me the point of 'The Left Hand of God'`,
-    content: `Starting with why the Lord of Discipline is cutting open girls because that is NEVER explained... and WHO exaclty is this book for? Between shifting tones and broad arguments I'm struggling to understand what the takeaway is.`,
+    content: `Starting with why the Lord of Discipline is cutting open girls because that is NEVER explained... and WHO exactly is this book for? Between shifting tones and broad arguments I'm struggling to understand what the takeaway is.`,
     userId: 4,
     createdAt: new Date(),
     updatedAt: new Date()
