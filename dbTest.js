@@ -8,3 +8,19 @@ function findAllUsers(){
 }
 
 // findAllUsers();
+
+function seeAUsersPosts(){
+    db.user.findOne({
+        where: {name: 'Billy'},
+        include: [db.post]
+    })
+    .then (thisUser => {
+        console.log(thisUser);
+        console.log(thisUser.dataValues.posts);
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}
+
+// seeAUsersPosts()
