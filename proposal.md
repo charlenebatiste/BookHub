@@ -28,7 +28,7 @@ _Hint: if you see this, you're looking at it_ 😉
 
 `4` An ERD with two models (minimum) > User + 1 Resource (one to many) - (Lucidchart)
 
-![Database ERD](/public/assets/bookhub-erd.png)
+![Database ERD](/public/assets/bookhub-ERD.png)
 
 `5` Create (3-5) User Stories for the base user experience - ( [Reference](https://revelry.co/resources/development/user-stories-that-dont-suck/) )
 
