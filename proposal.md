@@ -28,7 +28,7 @@ _Hint: if you see this, you're looking at it_ 😉
 
 `4` An ERD with two models (minimum) > User + 1 Resource (one to many) - (Lucidchart)
 
-![Database ERD](/public/assets/bookhub-ERD.png)
+![Database ERD](/public/assets/bookhub-erd.png)
 
 `5` Create (3-5) User Stories for the base user experience - ( [Reference](https://revelry.co/resources/development/user-stories-that-dont-suck/) )
 
@@ -43,3 +43,11 @@ _Hint: if you see this, you're looking at it_ 😉
 `7` Find API and test to see if you can get data ( _be able to print data in the console using Axios, Node-Fetch, and/or Postman_ )
 
 ![Proof Of Fetch](/public/assets/proof-of-fetch.png)
+
+`8` Stretch Goals
+
+- Allow the user to search books by several methods (title, author or genre)
+
+- Let users add books to a mustRead list on their Bookshelf
+
+- Allow for users to create and/or join BookClubs with other users
