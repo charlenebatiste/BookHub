@@ -50,10 +50,11 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-// Renders User Feed Page
-app.get('/home', (req,res) => {
+app.get('/home', (req, res) => {
+  
   res.render('home');
-})
+});
+
 
 // Renders Search Page
 app.get('/search', (req,res) => {
@@ -79,7 +80,7 @@ app.get('/books/:title', function(req, res) {
   });
 });
 
-// Renders User Profile
+// Renders User Profile (aka bookshelf)
 app.get('/profile', isLoggedIn, (req, res) => {
   // const { id, name, email } = req.user.get(); 
   res.render('profile');

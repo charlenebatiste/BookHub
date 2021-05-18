@@ -25,7 +25,7 @@ router.get('/logout', (req, res) => {
 // POST ROUTE
 
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/',
+  successRedirect: '/home',
   failureRedirect: '/auth/login',
   successFlash: 'Welcome back ...',
   failureFlash: 'Either email or password is incorrect' 

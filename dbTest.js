@@ -15,15 +15,16 @@ function seeAUsersPosts(){
         include: [db.post]
     })
     .then (thisUser => {
-        console.log(thisUser.name);
-        console.log(thisUser.posts);
+        console.log(thisUser.dataValues.name);
+        console.log(thisUser.dataValues.posts[0].dataValues.title);
+        // is the user has more than 1 post you would need to loop through the posts to get each bit of data you wanted
     })
     .catch(err => {
         console.log(err)
     })
 }
 
-seeAUsersPosts()
+// seeAUsersPosts()
 
 function findComments(){
     db.comment.findAll({
@@ -54,3 +55,17 @@ function findPostAndComments(){
 }
 
 // findPostAndComments()
+
+function findAllPosts(){
+    db.post.findAll()
+    .then(foundPosts => {
+        foundPosts.forEach( post => {
+            console.log(post.dataValues.title)
+        })
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}
+
+// findAllPosts()
