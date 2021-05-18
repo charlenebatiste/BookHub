@@ -97,26 +97,13 @@ app.get('/books/:title', function(req, res) {
     let bookData = [];
     searchReturn.forEach( e => {
         bookData.push(e.volumeInfo)
+        console.log(e.volumeInfo)
     });
     res.render('results', {bookData});
     // console.log(bookData)
     // renders the books return page 
   });
 });
-
-// Renders Details of a Specific Book
-app.get('/books/:id', function(req,res){
-    let input = req.params.id;
-    let googleBooksUrl = `https://www.googleapis.com/books/v1/volumes?q=${input}`;
-    axios.get(googleBooksUrl).then(response => {
-      let searchReturn = response.data.items;
-      let bookData = [];
-      searchReturn.forEach( e => {
-          bookData.push(e.volumeInfo)
-      });
-      res.render('details', {bookData});
-  })
-})
 
 // Renders User Profile (aka bookshelf)
 app.get('/profile', isLoggedIn, (req, res) => {

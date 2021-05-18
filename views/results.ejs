@@ -1,13 +1,19 @@
 
-<h1>Here are the results of your search</h1>
-
-<% bookData.forEach ( book => { %>
-
-    <div class="bookReturn">
-        <p><%=book.title%></p>
-        <p><%=book.authors%></p>
-        <a href="/books/<%=book.id%>">Read More</a>
+<div class="container">
+    <div class="row">
+        <h1 class="col text-center">Your Search Results</h1>
     </div>
-<% }) %>
 
+    <div class="row">
+        <% bookData.forEach ( book => { %>
+    <div class="bookReturn col-12 border border-light border-2 my-2">
+        <p><strong><%=book.title%></strong></p>
+        <p>by : <%=book.authors%></p>
+        <p>Publication Date: <%=book.publishedDate%></p>
+        <p><%=book.description%></p>
+    </div>
+    <% }) %>
+</div>
+
+</div>
 
