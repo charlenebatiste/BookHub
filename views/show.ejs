@@ -1,0 +1,14 @@
+<h1>Here is info on this specific post</h1>
+
+<h2><%= postData.title %></h2>
+<p><%= postData.content%></p>
+
+<div>
+    <h3>Comments</h3>
+</div>
+
+<div>
+    <% allComments.forEach(comment => { %>
+            <%= comment.content %>
+    <% }) %>
+</div>

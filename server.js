@@ -9,6 +9,7 @@ const isLoggedIn = require('./middleware/isLoggedIn');
 const axios = require('axios');
 const { search } = require('./controllers/auth');
 const apikey = process.env.API_KEY;
+const db = require('./models');
 
 const SECRET_SESSION = process.env.SECRET_SESSION;
 // console.log(SECRET_SESSION);
@@ -50,9 +51,32 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
+
+// Renders Homepage
 app.get('/home', (req, res) => {
-  
-  res.render('home');
+  db.post.findAll()
+  .then( foundPosts => {
+    let allPosts = [];
+    foundPosts.forEach(post =>{
+      allPosts.push(post.dataValues)
+    })
+    res.render('home', {allPosts});
+  })
+});
+
+
+// Renders Info on a Specific Post to the Page
+app.get('/home/:title', (req,res) => {
+  db.post.findOne({
+    where: 
+    {title: req.params.title},
+    include: [db.comment]
+  })
+  .then(thisPost => {
+    let postData = thisPost.dataValues
+    let allComments = thisPost.dataValues.comments
+    res.render('show', {postData, allComments});
+  })
 });
 
 
