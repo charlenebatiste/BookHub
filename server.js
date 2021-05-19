@@ -54,7 +54,7 @@ app.get('/', (req, res) => {
 
 
 // Renders Homepage
-app.get('/home', (req, res) => {
+app.get('/home', isLoggedIn, (req, res) => {
   db.post.findAll()
   .then( foundPosts => {
     let allPosts = [];
@@ -66,7 +66,7 @@ app.get('/home', (req, res) => {
 });
 
 // Renders Page to Create a New Post
-app.get('/new', (req,res) => {
+app.get('/new', isLoggedIn, (req,res) => {
   res.render('new')
 })
 
@@ -80,22 +80,19 @@ app.get('/home/:title', isLoggedIn, (req,res) => {
   .then(thisPost => {
     let postData = thisPost.dataValues
     let allComments = thisPost.dataValues.comments
-    // db.user.findOne({
-    //   where: {id: allComments.userId}
-    // })
-    res.render('show', {postData, allComments, user });
+    res.render('show', {postData, allComments});
    
   })
 });
 
 
 // Renders Search Page
-app.get('/search', (req,res) => {
+app.get('/search', isLoggedIn, (req,res) => {
   res.render('search');
 })
 
 // Renders Search Results Page
-app.get('/books/:title', (req, res) => {
+app.get('/books/:title', isLoggedIn, (req, res) => {
   let input = req.query.titleSearch;
   // console.log(input);
   let googleBooksUrl = `https://www.googleapis.com/books/v1/volumes?q=${input}`;
@@ -123,7 +120,7 @@ app.get('/profile', isLoggedIn, (req, res) => {
 // POST ROUTES
 
 // Add a post to database
-app.post('/', (req, res) => {
+app.post('/', isLoggedIn, (req, res) => {
   db.post.create({
     title: req.body.title,
     content: req.body.content,
@@ -136,7 +133,7 @@ app.post('/', (req, res) => {
 })
 
 // Add comments to a post
-app.post('/comments', (req,res)=> {
+app.post('/comments', isLoggedIn, (req,res)=> {
   db.comment.create({
     content: req.body.content,
     // username?
@@ -144,6 +141,15 @@ app.post('/comments', (req,res)=> {
   })
   .then(comment => {
     res.redirect('/home/'+ req.body.postId)
+  })
+})
+
+// And a book to favorites list
+app.post('/addtofavorites', function(req, res) {
+  db.book.create(req.body)
+  .then( b =>{
+    res.redirect('/profile')
+    // profile page is bookshelf
   })
 })
 
