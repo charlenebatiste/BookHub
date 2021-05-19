@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row post-head">
         <h1 class="col-12 post-title"><%= postData.title %></h1>
-        <p class="col-12 post-author fs-4">Posted by <%= postData.userId%></p>
+        <p class="col-12 post-author fs-4">Posted by <%= postData.author%></p>
     </div>
     <p class="fs-5"><%= postData.content%></p>
 
@@ -11,7 +11,7 @@
     <% if(allComments && allComments.length) { %>
     <div>
         <% allComments.forEach(comment => { %>
-                <p><%= comment.content %> - <%= comment.userId %> </p>
+                <p><%= comment.content %> - <%= comment.author %> </p>
         <% }) %>
         <% } else { %>
             <p>Be the first to comment on this article</p>
@@ -23,6 +23,12 @@
 
           <form class="col-sm-12" method="POST" action="/comments">
             <input type="hidden" name="postId" value="<%= postData.id%>">
+            <input type="hidden" name="userId" value="<%= user.id%>">
+            <div class="row my-2">
+              <div class="input-field  col-xs-12">
+                <label for="name">Your Name</label>
+                <input type="text" id="author" name="author" class="form-control"></input type="text">
+              </div>
               <div class="row my-2">
                 <div class="input-field  col-xs-12">
                   <textarea id="content" name="content" class="form-control" placeholder="Your Thoughts"></textarea>

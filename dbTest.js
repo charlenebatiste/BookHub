@@ -69,3 +69,32 @@ function findAllPosts(){
 }
 
 // findAllPosts()
+
+// findPostAndComments()
+
+function findAllComments(){
+    db.comment.findAll({
+        where: {userId: 6}
+    })
+    .then(comments => {
+        comments.forEach( comment => {
+            console.log(comment.dataValues)
+        })
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}
+
+// findAllComments()
+
+
+// db.comment.update({
+//     author: 'Charlene'
+//   }, {
+//     where: {
+//       userId: 6
+//     }
+// }).then(numRowsChanged=>{
+//     console.log(numRowsChanged)
+// });

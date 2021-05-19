@@ -67,11 +67,13 @@ app.get('/home', isLoggedIn, (req, res) => {
 
 // Renders Page to Create a New Post
 app.get('/new', isLoggedIn, (req,res) => {
-  res.render('new')
+  const user = req.user.get()
+  res.render('new', {user})
 })
 
 // Renders Info on a Specific Post to the Page
 app.get('/home/:title', isLoggedIn, (req,res) => {
+  const user = req.user.get()
   db.post.findOne({
     where: 
     {title: req.params.title},
@@ -80,7 +82,7 @@ app.get('/home/:title', isLoggedIn, (req,res) => {
   .then(thisPost => {
     let postData = thisPost.dataValues
     let allComments = thisPost.dataValues.comments
-    res.render('show', {postData, allComments});
+    res.render('show', {postData, allComments, user});
    
   })
 });
@@ -94,7 +96,6 @@ app.get('/search', isLoggedIn, (req,res) => {
 // Renders Search Results Page
 app.get('/books/:title', isLoggedIn, (req, res) => {
   let input = req.query.titleSearch;
-  // console.log(input);
   let googleBooksUrl = `https://www.googleapis.com/books/v1/volumes?q=${input}`;
   // sets a variable equal to the API path + search terms
   axios.get(googleBooksUrl).then(response => {
@@ -103,29 +104,25 @@ app.get('/books/:title', isLoggedIn, (req, res) => {
     let bookData = [];
     searchReturn.forEach( e => {
         bookData.push(e.volumeInfo)
-        // console.log(e.volumeInfo)
     });
     res.render('results', {bookData});
-    // console.log(bookData)
     // renders the books return page 
   });
 });
 
 // Renders User Profile (aka bookshelf)
 app.get('/profile', isLoggedIn, (req, res) => {
-  // const { id, name, email } = req.user.get(); 
   res.render('profile');
 });
 
 // POST ROUTES
 
 // Add a post to database
-app.post('/', isLoggedIn, (req, res) => {
+app.post('/articles', isLoggedIn, (req, res) => {
   db.post.create({
     title: req.body.title,
     content: req.body.content,
-    // userId: req.body.userId
-    // not sure how to get user Id
+    userId: req.body.userId
   })
   .then(post => {
     res.redirect('/home')
@@ -135,17 +132,19 @@ app.post('/', isLoggedIn, (req, res) => {
 // Add comments to a post
 app.post('/comments', isLoggedIn, (req,res)=> {
   db.comment.create({
+    author: req.body.author,
     content: req.body.content,
-    // username?
+    userId: req.body.userId,
     postId: req.body.postId,
   })
   .then(comment => {
-    res.redirect('/home/'+ req.body.postId)
+    console.log(comment)
+    res.redirect('/home/:title')
   })
 })
 
 // And a book to favorites list
-app.post('/addtofavorites', function(req, res) {
+app.post('/addtofavorites', isLoggedIn, function(req, res) {
   db.book.create(req.body)
   .then( b =>{
     res.redirect('/profile')
