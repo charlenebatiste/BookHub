@@ -1,17 +1,19 @@
 <div class="container">
-<div class="row">
-<h1 class="col">Home Feed</h1>
-</div>
-<div class="row">
-<p class="fs-3">Scroll to See Recent Posts</p>
-</div>
-<div>
+    <div class="row">
+        <h1 class="col">Home Feed</h1>
+    </div>
+    <div class="row">
+        <p class="fs-3">Scroll to See Recent Posts</p>
+    </div>
+    <div class="row">
     <% allPosts.forEach(post => { %>
-        <h2>
-        <a class="link-secondary" href="/home/<%= post.title %>"><%= post.title %></a>
-    </h2>
+        <div class="card col-12 m-2" >
+            <div class="card-body">
+                <p class="fs-3 card-title"><%= post.title %></p>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="text-end"><a href="/home/<%= post.title %>" class="card-link link-secondary">See this post</a></p>
+            </div>
+        </div>
     <% }); %>
-    
-</div>
-
+    </div>
 </div>

@@ -7,10 +7,12 @@
     <div class="row">
         <% bookData.forEach ( book => { %>
     <div class="bookReturn col-12 border border-light border-2 my-2">
-        <p><strong><%=book.title%></strong></p>
+        <p><%=book.title%></p>
+        <p><%=book.subtitle%></p>
         <p>by : <%=book.authors%></p>
         <p>Publication Date: <%=book.publishedDate%></p>
         <p><%=book.description%></p>
+        <img src="<%=book.imageLinks.thumbnail %>" alt="Front Cover of <%=book.title%>">
     </div>
     <% }) %>
 </div>

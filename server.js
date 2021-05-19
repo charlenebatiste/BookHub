@@ -97,7 +97,7 @@ app.get('/books/:title', function(req, res) {
     let bookData = [];
     searchReturn.forEach( e => {
         bookData.push(e.volumeInfo)
-        console.log(e.volumeInfo)
+        // console.log(e.volumeInfo)
     });
     res.render('results', {bookData});
     // console.log(bookData)
