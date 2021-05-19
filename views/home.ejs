@@ -1,11 +1,17 @@
-<h1>Home</h1>
-<h2>Recent Posts</h2>
+<div class="container">
+<div class="row">
+<h1 class="col">Home Feed</h1>
+</div>
+<div class="row">
+<p class="fs-3">Scroll to See Recent Posts</p>
+</div>
 <div>
     <% allPosts.forEach(post => { %>
         <h2>
-        <a href="/home/<%= post.title %>"><%= post.title %></a>
+        <a class="link-secondary" href="/home/<%= post.title %>"><%= post.title %></a>
     </h2>
     <% }); %>
     
 </div>
 
+</div>

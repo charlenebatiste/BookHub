@@ -6,7 +6,8 @@
 
 <% if (alerts.success) { %>
     <% alerts.success.forEach(msg => { %>
-        <div class="alert alert-success"><%= msg %></div>
+        <div class="alert alert-light alert-dismissible fade show"><%= msg %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
    <% }) %>
 <% } %>
 

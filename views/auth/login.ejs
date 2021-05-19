@@ -1,12 +1,24 @@
+<div class="container">
+  <div class="row">
+  	<h1 class="display-3 col-12">BookHub</h1>
+  	<p class="col-12 text-center fs-3"> <u>Log In to Get Connected</u> </p>
+  </div>
+  <div class="row text-end fs-5 userInput">
+    <form action="/auth/login" method="POST">
+      <div class="userInput-style border border-dark border-2 col-8 offset-4 py-4">
+        <div class="col-11 m-3">
+          <label class="mx-4" for="auth-email">Email</label>
+          <input id="auth-email" type="email" name="email">
+        </div>
+        <div class="col-11 m-3">
+          <label class="mx-4" for="auth-password">Password</label>
+          <input id="auth-password" type="password" name="password">
+        </div>
+      </div>
+      <div class="col-11 m-3">
+        <input type="submit" value="Log In">
+      </div>
 
-<h1>BookHub</h1>
-
-<form action="/auth/login" method="POST">
-  <label for="auth-email">Email</label>
-  <input id="auth-email" type="email" name="email">
-
-  <label for="auth-password">Password</label>
-  <input id="auth-password" type="password" name="password">
-
-  <input type="submit" value="Log In">
-</form>
+    </form>
+  </div>
+</div>

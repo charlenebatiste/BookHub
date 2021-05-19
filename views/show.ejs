@@ -1,15 +1,18 @@
-<h1>Here is info on this specific post</h1>
+<div class="container">
+    <div class="row post-head">
+        <h1 class="col-12 post-title"><%= postData.title %></h1>
+        <p class="col-12 post-author fs-4">Posted by  ---> get user data back and print name here</p>
+    </div>
+    <p class="fs-5"><%= postData.content%></p>
 
-<h2><%= postData.title %></h2>
-<p><%= postData.content%></p>
+    <div>
+        <h3>Comments</h3>
+    </div>
 
-<div>
-    <h3>Comments</h3>
-</div>
-
-<div>
-    <% allComments.forEach(comment => { %>
-            <%= comment.content %>
-    <% }) %>
+    <div>
+        <% allComments.forEach(comment => { %>
+                <%= comment.content %>
+        <% }) %>
+    </div>
 </div>
 

@@ -1,6 +1,22 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Newsreader', serif;
+}
+
+body{
+  background-color: #ffbca4;
+}
+
 nav ul li {
   text-decoration: none;
   display: inline-block;
   margin-right: .3em;
+  padding: .5em;
+  font-size: 1.2em;
+}
+
+header {
+  background-color: #ffd3a4;
+  text-align: end;
 }
 
