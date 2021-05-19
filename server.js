@@ -43,6 +43,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use('/auth', require('./controllers/auth'));
 
 // GET ROUTES
 
@@ -64,9 +65,13 @@ app.get('/home', (req, res) => {
   })
 });
 
+// Renders Page to Create a New Post
+app.get('/new', (req,res) => {
+  res.render('new')
+})
 
 // Renders Info on a Specific Post to the Page
-app.get('/home/:title', (req,res) => {
+app.get('/home/:title', isLoggedIn, (req,res) => {
   db.post.findOne({
     where: 
     {title: req.params.title},
@@ -75,7 +80,11 @@ app.get('/home/:title', (req,res) => {
   .then(thisPost => {
     let postData = thisPost.dataValues
     let allComments = thisPost.dataValues.comments
-    res.render('show', {postData, allComments});
+    // db.user.findOne({
+    //   where: {id: allComments.userId}
+    // })
+    res.render('show', {postData, allComments, user });
+   
   })
 });
 
@@ -86,7 +95,7 @@ app.get('/search', (req,res) => {
 })
 
 // Renders Search Results Page
-app.get('/books/:title', function(req, res) {
+app.get('/books/:title', (req, res) => {
   let input = req.query.titleSearch;
   // console.log(input);
   let googleBooksUrl = `https://www.googleapis.com/books/v1/volumes?q=${input}`;
@@ -111,8 +120,35 @@ app.get('/profile', isLoggedIn, (req, res) => {
   res.render('profile');
 });
 
+// POST ROUTES
 
-app.use('/auth', require('./controllers/auth'));
+// Add a post to database
+app.post('/', (req, res) => {
+  db.post.create({
+    title: req.body.title,
+    content: req.body.content,
+    // userId: req.body.userId
+    // not sure how to get user Id
+  })
+  .then(post => {
+    res.redirect('/home')
+  })
+})
+
+// Add comments to a post
+app.post('/comments', (req,res)=> {
+  db.comment.create({
+    content: req.body.content,
+    // username?
+    postId: req.body.postId,
+  })
+  .then(comment => {
+    res.redirect('/home/'+ req.body.postId)
+  })
+})
+
+
+
 
 
 

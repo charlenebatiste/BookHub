@@ -1,18 +1,41 @@
 <div class="container">
     <div class="row post-head">
         <h1 class="col-12 post-title"><%= postData.title %></h1>
-        <p class="col-12 post-author fs-4">Posted by  ---> get user data back and print name here</p>
+        <p class="col-12 post-author fs-4">Posted by <%= postData.userId%></p>
     </div>
     <p class="fs-5"><%= postData.content%></p>
 
     <div>
         <h3>Comments</h3>
     </div>
-
+    <% if(allComments && allComments.length) { %>
     <div>
         <% allComments.forEach(comment => { %>
-                <%= comment.content %>
+                <p><%= comment.content %> - <%= comment.userId %> </p>
         <% }) %>
-    </div>
-</div>
+        <% } else { %>
+            <p>Be the first to comment on this article</p>
+          <% } %>
+          
+          <hr>
+          
+          <h3>Add your own comment</h3>
 
+          <form class="col-sm-12" method="POST" action="/comments">
+            <input type="hidden" name="postId" value="<%= postData.id%>">
+              <div class="row my-2">
+                <div class="input-field  col-xs-12">
+                  <textarea id="content" name="content" class="form-control" placeholder="Your Thoughts"></textarea>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <button class="btn btn-primary" type="submit">
+                    Add Comment
+                  </button>
+                </div>
+              </div>
+        </form>
+    </div>
+   
+</div>
