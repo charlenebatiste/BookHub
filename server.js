@@ -7,9 +7,9 @@ const session = require('express-session');
 const passport = require('./config/ppConfig');
 const isLoggedIn = require('./middleware/isLoggedIn');
 const axios = require('axios');
-const { search } = require('./controllers/auth');
 const apikey = process.env.API_KEY;
 const db = require('./models');
+const methodOverride = require('method-override')
 
 const SECRET_SESSION = process.env.SECRET_SESSION;
 // console.log(SECRET_SESSION);
@@ -22,6 +22,7 @@ app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/public'));
 app.use(layouts);
+app.use(methodOverride(`_method`));
 
 app.use(session({
   secret: SECRET_SESSION,    // What we give the user on our site as a session cookie
@@ -76,17 +77,13 @@ app.get('/home/:title', isLoggedIn, (req,res) => {
   const user = req.user.get()
   db.post.findOne({
     where: 
-    {title: req.params.title}
-    // include: [db.comment]
+    {title: req.params.title},
+    include: [db.comment]
   })
   .then(thisPost => {
-    let postData = thisPost
-    // let allComments = thisPost.dataValues.comments
-    console.log(`~~~~~~~~Here is post data~~~~~~~~~`)
-    console.log(postData)
-    // res.render('show', {postData, allComments, user});
-    res.render('show', {postData, user})
-   
+    let postData = thisPost.dataValues
+    let allComments = thisPost.dataValues.comments
+    res.render('show', {postData, allComments, user});
   })
 });
 
@@ -98,6 +95,7 @@ app.get('/search', isLoggedIn, (req,res) => {
 
 // Renders Search Results Page
 app.get('/books/:title', isLoggedIn, (req, res) => {
+  const user = req.user.get()
   let input = req.query.titleSearch;
   let googleBooksUrl = `https://www.googleapis.com/books/v1/volumes?q=${input}`;
   // sets a variable equal to the API path + search terms
@@ -108,14 +106,19 @@ app.get('/books/:title', isLoggedIn, (req, res) => {
     searchReturn.forEach( e => {
         bookData.push(e.volumeInfo)
     });
-    res.render('results', {bookData});
+    res.render('results', {bookData, user});
     // renders the books return page 
   });
 });
 
 // Renders User Profile (aka bookshelf)
 app.get('/profile', isLoggedIn, (req, res) => {
-  res.render('profile');
+  const user = req.user.get()
+  db.book.findAll()
+  .then(favoriteBooks => {
+    res.render('profile', {favoriteBooks, user});
+  })
+  
 });
 
 // POST ROUTES
@@ -147,7 +150,7 @@ app.post('/comments', isLoggedIn, (req,res)=> {
   })
 })
 
-// And a book to favorites list
+// Add a book to favorites list
 app.post('/addtofavorites', isLoggedIn, function(req, res) {
   db.book.create(req.body)
   .then( b =>{
@@ -156,6 +159,27 @@ app.post('/addtofavorites', isLoggedIn, function(req, res) {
   })
 })
 
+// Remove a book from favorites list
+app.delete("/remove/:id", (req, res) => {
+  db.book.destroy({
+    where: {id: req.params.id },
+  });
+  res.redirect("/profile");
+});
+
+
+// Edit a comment
+app.put('/edit', (req,res) => {
+  db.comment.update(
+    {content: req.body.content},
+    {
+    where: {id: req.body.commentId}
+  })
+  .then( updatedComment => {
+    console.log(`-----successfully updated comment-----`)
+    res.redirect(`/home/` + req.body.postTitle)
+  })
+})
 
 
 

@@ -14,10 +14,10 @@
         <p><%=book.description%></p>
         <img src="<%=book.imageLinks.thumbnail %>" alt="Front Cover of <%=book.title%>">
         <form method="POST" action="/addtofavorites">
+            <input type="hidden" name="userId" value="<%= user.id%>">
             <input hidden type="text" name="title" value="<%=book.title%>">
             <input hidden type="text" name="subtitle" value="<%=book.subtitle%>">
             <input hidden type="text" name="authors" value="<%=book.authors%>">
-            <input hidden type="text" name="description" value="<%=book.description%>">
             <input hidden type="text" name="bookCover" value="<%=book.imageLinks.thumbnail %>">
             <button type="submit">Add to Favorites</button>
             <!-- will create book in database and add that book to the users favorites -->

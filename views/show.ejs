@@ -12,6 +12,14 @@
     <div>
         <% allComments.forEach(comment => { %>
                 <p><%= comment.content %> - <%= comment.author %> </p>
+                <% if (comment.userId === user.id) { %>
+                  <form method="POST" action="/edit?_method=PUT">
+                    <input type="hidden" name="postTitle" value="<%= postData.title%>">
+                    <input type="hidden" name="commentId" value="<%= comment.id%>">
+                    <input type="text" name="content">
+                    <button class="btn btn-outline-danger">Edit</button>
+                  </form>
+                <%}%>
         <% }) %>
         <% } else { %>
             <p>Be the first to comment on this article</p>

@@ -68,7 +68,7 @@ function findAllPosts(){
     })
 }
 
-findAllPosts()
+// findAllPosts()
 
 function addAuthor(){
     db.post.update({
@@ -99,3 +99,12 @@ function findAllComments(){
 }
 
 // findAllComments()
+
+function findFavoriteBooks(){
+    db.book.findAll()
+    .then(books => {
+        console.log(books)
+    })
+}
+
+// findFavoriteBooks()

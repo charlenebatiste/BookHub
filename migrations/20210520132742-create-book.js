@@ -17,14 +17,14 @@ module.exports = {
       authors: {
         type: Sequelize.STRING
       },
-      publishedDate: {
-        type: Sequelize.STRING
-      },
       description: {
         type: Sequelize.STRING
       },
       bookCover: {
         type: Sequelize.STRING
+      },
+      userId: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
