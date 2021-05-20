@@ -1,63 +1,73 @@
 <div class="container">
     <div class="row post-head">
-        <h1 class="col-12 post-title"><%= postData.title %></h1>
-        <p class="col-12 post-author fs-4">Posted by <%= postData.author%></p>
+      <h1 class="col-12 post-title"><%= postData.title %></h1>
+        <hr>
+      <p class="col-12 post-author fs-6 fst-italic">Posted by <%= postData.author%></p>
     </div>
-    <p class="fs-5"><%= postData.content%></p>
-
-    <div>
-        <h3>Comments</h3>
+    <div class="row">
+      <div class="card col mx-5 mt-1 mb-3">
+        <div class="card-body">
+          <p class="card-text fs-5"><%= postData.content%></p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <h3 class="col"><u> Comments</u></h3>
     </div>
     <% if(allComments && allComments.length) { %>
-    <div>
+    <div class="row">
         <% allComments.forEach(comment => { %>
-                <p><%= comment.content %> - <%= comment.author %> </p>
+                <p class="col-6 fs-5 mx-5"><%= comment.content %> - <%= comment.author %> </p>
                 <% if (comment.userId === user.id) { %>
                   <form method="POST" action="/edit?_method=PUT">
                     <input type="hidden" name="postTitle" value="<%= postData.title%>">
                     <input type="hidden" name="commentId" value="<%= comment.id%>">
                     <div class="dropdown">
-                      <button class="btn btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                      <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         Edit
                       </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <input type="text" name="content">
-                        <button class="btn btn-outline-danger">Update</button>
+                      <div class="dropdown-menu p-2 col-12" aria-labelledby="dropdownMenuButton1">
+                        <input type="text" name="content" class="col-11">
+                        <button class="btn btn-outline-danger btn-sm px-2">Update</button>
                       </div>
                     </div>
                   </form>
+                </div>
                 <%}%>
-        <% }) %>
-        <% } else { %>
-            <p>Be the first to comment on this article</p>
+                <% }) %>
+                <% } else { %>
+                <p>Be the first to comment on this article</p>
           <% } %>
-          
-          <hr>
-          
-          <h3>Add your own comment</h3>
-
-          <form class="col-sm-12" method="POST" action="/comments">
+    <hr>
+    <div class="row">
+      <h3 class="col mt-4">Add your own comment</h3>
+    </div>
+    <div class="row my-2">
+          <form class="col" method="POST" action="/comments">
             <input type="hidden" name="postTitle" value="<%= postData.title%>">
             <input type="hidden" name="postId" value="<%= postData.id%>">
             <input type="hidden" name="userId" value="<%= user.id%>">
-            <div class="row my-2">
-              <div class="input-field  col-xs-12">
-                <label for="name">Your Name</label>
-                <input type="text" id="author" name="author" class="form-control"></input type="text">
+            <div class="row">
+                <div class="input-field">
+                    <label for="name" class="fs-5 ">Your Name</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" id="author" name="author" class="form-control"></input type="text">
+                </div>
               </div>
-              <div class="row my-2">
-                <div class="input-field  col-xs-12">
+            <div class="row my-2">
+                <div class="input-field">
                   <textarea id="content" name="content" class="form-control" placeholder="Your Thoughts"></textarea>
                 </div>
               </div>
               <div class="row">
-                <div class="col-sm-12">
+                <div class="col">
                   <button class="btn btn-primary" type="submit">
                     Add Comment
                   </button>
                 </div>
               </div>
+          
         </form>
-    </div>
-   
-</div>
+     </div>
+  </div>
