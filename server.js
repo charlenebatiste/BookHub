@@ -106,6 +106,7 @@ app.get('/books/:title', isLoggedIn, (req, res) => {
     searchReturn.forEach( e => {
         bookData.push(e.volumeInfo)
     });
+    console.log(bookData)
     res.render('results', {bookData, user});
     // renders the books return page 
   });
@@ -146,7 +147,7 @@ app.post('/comments', isLoggedIn, (req,res)=> {
   })
   .then(comment => {
     console.log(comment)
-    res.redirect('/home/:title')
+    res.redirect(`/home/` + req.body.postTitle)
   })
 })
 

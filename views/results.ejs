@@ -5,20 +5,26 @@
     </div>
 
     <div class="row">
-        <% bookData.forEach ( book => { %>
+        <% bookData.forEach(book => { %>
     <div class="bookReturn col-12 border border-light border-2 my-2">
         <p><%=book.title%></p>
         <p><%=book.subtitle%></p>
         <p>by : <%=book.authors%></p>
         <p>Publication Date: <%=book.publishedDate%></p>
         <p><%=book.description%></p>
-        <img src="<%=book.imageLinks.thumbnail %>" alt="Front Cover of <%=book.title%>">
+        <% if (book.imageLinks){%>
+        <img src="<%= book.imageLinks.thumbnail %>" alt="Front Cover of <%=book.title%>">
+        <% }else { %>
+            <h1>no image available</h1>
+        <% } %>
         <form method="POST" action="/addtofavorites">
             <input type="hidden" name="userId" value="<%= user.id%>">
             <input hidden type="text" name="title" value="<%=book.title%>">
             <input hidden type="text" name="subtitle" value="<%=book.subtitle%>">
             <input hidden type="text" name="authors" value="<%=book.authors%>">
+            <% if (book.imageLinks){%>
             <input hidden type="text" name="bookCover" value="<%=book.imageLinks.thumbnail %>">
+            <% } %>
             <button type="submit">Add to Favorites</button>
             <!-- will create book in database and add that book to the users favorites -->
           </form>

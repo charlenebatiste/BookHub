@@ -30,6 +30,7 @@
           <h3>Add your own comment</h3>
 
           <form class="col-sm-12" method="POST" action="/comments">
+            <input type="hidden" name="postTitle" value="<%= postData.title%>">
             <input type="hidden" name="postId" value="<%= postData.id%>">
             <input type="hidden" name="userId" value="<%= user.id%>">
             <div class="row my-2">
