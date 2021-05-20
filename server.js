@@ -76,13 +76,16 @@ app.get('/home/:title', isLoggedIn, (req,res) => {
   const user = req.user.get()
   db.post.findOne({
     where: 
-    {title: req.params.title},
-    include: [db.comment]
+    {title: req.params.title}
+    // include: [db.comment]
   })
   .then(thisPost => {
-    let postData = thisPost.dataValues
-    let allComments = thisPost.dataValues.comments
-    res.render('show', {postData, allComments, user});
+    let postData = thisPost
+    // let allComments = thisPost.dataValues.comments
+    console.log(`~~~~~~~~Here is post data~~~~~~~~~`)
+    console.log(postData)
+    // res.render('show', {postData, allComments, user});
+    res.render('show', {postData, user})
    
   })
 });
@@ -121,6 +124,7 @@ app.get('/profile', isLoggedIn, (req, res) => {
 app.post('/articles', isLoggedIn, (req, res) => {
   db.post.create({
     title: req.body.title,
+    author: req.body.author,
     content: req.body.content,
     userId: req.body.userId
   })

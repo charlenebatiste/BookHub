@@ -60,7 +60,7 @@ function findAllPosts(){
     db.post.findAll()
     .then(foundPosts => {
         foundPosts.forEach( post => {
-            console.log(post.dataValues.title)
+            console.log(post)
         })
     })
     .catch(err => {
@@ -68,13 +68,25 @@ function findAllPosts(){
     })
 }
 
-// findAllPosts()
+findAllPosts()
 
-// findPostAndComments()
+function addAuthor(){
+    db.post.update({
+        author: 'Charlene'
+      }, {
+        where: {
+            title: `Where does Lorem Ipsum come from?`
+        }
+    }).then(numRowsChanged=>{
+        console.log(numRowsChanged)
+    });
+}
+
+// addAuthor()
 
 function findAllComments(){
     db.comment.findAll({
-        where: {userId: 6}
+        where: {userId: 1}
     })
     .then(comments => {
         comments.forEach( comment => {
@@ -87,14 +99,3 @@ function findAllComments(){
 }
 
 // findAllComments()
-
-
-// db.comment.update({
-//     author: 'Charlene'
-//   }, {
-//     where: {
-//       userId: 6
-//     }
-// }).then(numRowsChanged=>{
-//     console.log(numRowsChanged)
-// });
