@@ -24,6 +24,8 @@
             <input hidden type="text" name="authors" value="<%=book.authors%>">
             <% if (book.imageLinks){%>
             <input hidden type="text" name="bookCover" value="<%=book.imageLinks.thumbnail %>">
+            <% }else { %>
+                <input hidden type="text" name="bookCover" value="null">
             <% } %>
             <button type="submit">Add to Favorites</button>
             <!-- will create book in database and add that book to the users favorites -->

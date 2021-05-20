@@ -16,8 +16,15 @@
                   <form method="POST" action="/edit?_method=PUT">
                     <input type="hidden" name="postTitle" value="<%= postData.title%>">
                     <input type="hidden" name="commentId" value="<%= comment.id%>">
-                    <input type="text" name="content">
-                    <button class="btn btn-outline-danger">Edit</button>
+                    <div class="dropdown">
+                      <button class="btn btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Edit
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <input type="text" name="content">
+                        <button class="btn btn-outline-danger">Update</button>
+                      </div>
+                    </div>
                   </form>
                 <%}%>
         <% }) %>

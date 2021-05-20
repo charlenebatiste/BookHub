@@ -70,6 +70,17 @@ function findAllPosts(){
 
 // findAllPosts()
 
+function destroyPost(){
+db.post.destroy({
+    where: { id: 6 }
+  }).then(numRowsDeleted=>{
+      console.log(numRowsDeleted)
+    // do something when done deleting
+  })
+};
+
+// destroyPost();
+
 function addAuthor(){
     db.post.update({
         author: 'Charlene'
