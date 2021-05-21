@@ -7,17 +7,13 @@ body{
   background-color: #ffbca4;
 }
 
-nav ul li {
-  text-decoration: none;
-  display: inline-block;
-  margin-right: .3em;
-  padding: .5em;
-  font-size: 1.2em;
-}
-
 header {
   background-color: #ffd3a4;
-  text-align: end;
+}
+
+.navbar li {
+  font-size: 1.2em;
+  list-style-type: none;
 }
 
 .userInput-style {
@@ -29,3 +25,6 @@ header {
   background-color: #fdf5ec;
 }
 
+.bookReturn{
+  border: solid 1px black;
+}

@@ -1,16 +1,27 @@
-<div class="container">
-<h2>My Bookshelf</h2>
-<h3>favorites</h3>
+<div class="container my-3">
+    <div class="row">
+        <h2 class="col">My Bookshelf</h2>
+    </div>
+    <hr>
+    <div class="row">
+        <h3 class="col"><u> Favorite Books </u></h3>
+    </div>
+    <div class="row">
+        <% favoriteBooks.forEach(book => { %>
+        <% if(book.dataValues.userId === user.id){ %>
+                <div class="col-4 favBook">
+                    <img src="<%= book.dataValues.bookCover%>" alt="cover of <%= book.dataValues.title %>">
+                    <p class="fs-5"><%= book.dataValues.title %></p>
+                    <p><%= book.dataValues.subtitle %></p>
+                    <p><%= book.dataValues.authors %></p>
+                   
+                    <form method="POST" action="/remove/<%= book.dataValues.id %>?_method=DELETE"><button class="btn btn-outline-danger" >Remove from Favorites</button></form>
 
-<% favoriteBooks.forEach(book => { %>
-    <% if(book.dataValues.userId === user.id){ %>
-    <div>
-        <p><%= book.dataValues.title %></p>
-        <p><%= book.dataValues.subtitle %></p>
-        <p><%= book.dataValues.authors %></p>
-        <img src="<%= book.dataValues.bookCover%>" alt="cover of <%= book.dataValues.title %>">
-        <form method="POST" action="/remove/<%= book.dataValues.id %>?_method=DELETE"><button class="btn btn-outline-danger" >Remove from Favorites</button></form>
+                    
+                </div>
+        <% }}) %>
     </div>
 
-<% }}) %>
+
+    
 </div>
