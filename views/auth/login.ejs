@@ -3,20 +3,20 @@
   	<h1 class="display-3 col-12">BookHub</h1>
   	<p class="col-12 text-center fs-3"> <u>Log In to Get Connected</u> </p>
   </div>
-  <div class="row text-end fs-5 userInput">
+  <div class="row fs-5 userInput">
     <form action="/auth/login" method="POST">
-      <div class="userInput-style border border-dark border-2 col-8 offset-4 py-4">
+      <div class="userInput-style col-8 offset-4 py-4">
         <div class="col-11 m-3">
-          <label class="mx-4" for="auth-email">Email</label>
-          <input id="auth-email" type="email" name="email">
+          <label class="mx-4 col-3 text-end" for="auth-email">Email</label>
+          <input id="auth-email" type="email" name="email" class="col-7">
         </div>
         <div class="col-11 m-3">
-          <label class="mx-4" for="auth-password">Password</label>
-          <input id="auth-password" type="password" name="password">
+          <label class="mx-4 col-3 text-end" for="auth-password">Password</label>
+          <input id="auth-password" type="password" name="password" class="col-7">
         </div>
       </div>
       <div class="col-11 m-3">
-        <input type="submit" value="Log In">
+        <input type="submit" value="Log In" class="float-end">
       </div>
 
     </form>

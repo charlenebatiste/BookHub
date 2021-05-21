@@ -1,15 +1,26 @@
 
-<h1>BookHub</h1>
+<div class="container">
+  <div class="row">
+  	<h1 class="display-3 col-12">BookHub</h1>
+  	<p class="col-12 text-center fs-3"> <u>Sign Up To Get Started</u> </p>
 
-<form action="/auth/signup" method="POST">
-  <label for="new-email">Email</label>
-  <input id="new-email" type="email" name="email">
-
-  <label for="new-name">Name</label>
-  <input id="new-name" type="text" name="name">
-
-  <label for="new-password">Password</label>
-  <input id="new-password" type="password" name="password">
-
-  <input type="submit" value="Sign up">
-</form>
+  <form action="/auth/signup" method="POST">
+    <div class="userInput-style col-8 offset-4 py-4 fs-5">
+      <div class="col-11 m-3">
+        <label for="new-email" class="mx-4 col-3 text-end">Email</label>
+        <input id="new-email" type="email" name="email" class="col-7">
+      </div>
+      <div class="col-11 m-3">
+        <label for="new-name" class="mx-4 col-3 text-end">Name</label>
+        <input id="new-name" type="text" name="name" class="col-7">
+      </div>
+      <div class="col-11 m-3">
+        <label for="new-password" class="mx-4 col-3 text-end">Password</label>
+        <input id="new-password" type="password" name="password" class="col-7">
+      </div>
+    </div>
+    <div class="col-11 m-3 fs-5">
+      <input type="submit" value="Sign up" class="float-end">
+    </div>
+  </form>
+</div>

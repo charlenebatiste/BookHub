@@ -20,3 +20,12 @@ header {
   text-align: end;
 }
 
+.userInput-style {
+  background-color: #d2e5fac2;
+  border: solid 1px #3b6592;
+}
+
+.postContent{
+  background-color: #fdf5ec;
+}
+

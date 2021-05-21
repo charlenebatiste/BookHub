@@ -1,23 +1,26 @@
 <div class="container">
+  <div class="row">
+    <h2 class="col display-6">BookHub</h2>
+  </div>
     <div class="row">
-        <h1 class="col">Create A New Post</h1>
+        <h1 class="col text-center">Create A New Post</h1>
     </div>
-<form action="/articles" method="POST">
+<form action="/articles" method="POST" class="fs-4">
     <input type="hidden" name="userId" value="<%= user.id%>">
-    <div class="form-group">
+    <div class="form-group my-4">
       <label for="title">Title</label>
       <input type="text" class="form-control" id="title" name="title" required>
     </div>
-    <div class="form-group">
+    <div class="form-group my-4">
       <label for="author">Your Name</label>
       <input type="text" class="form-control" id="author" name="author" required>
     </div>
-  
-    <div class="form-group">
+    <div class="form-group my-4">
       <label for="content">Content</label>
       <textarea type="text" class="form-control" id="content" name="content" required></textarea>
     </div>
-  
-    <p class="col text-end"><input type="submit" class="btn btn-primary"></p>
+    <div class="col text-end fs-4">
+      <input type="submit" class="btn btn-primary fs-5">
+    </div>
   </form>
 </div>
