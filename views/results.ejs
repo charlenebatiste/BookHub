@@ -7,7 +7,7 @@
     <div class="row">
         <% bookData.forEach(book => { %>
     <div class="bookReturn col-12 border border-light border-2 my-2">
-        <p><%=book.title%></p>
+        <p class="col-6 fs-4"><%=book.title%></p>
         <p><%=book.subtitle%></p>
         <p>by : <%=book.authors%></p>
         <p>Publication Date: <%=book.publishedDate%></p>
@@ -27,8 +27,10 @@
             <% }else { %>
                 <input hidden type="text" name="bookCover" value="null">
             <% } %>
-            <button type="submit">Add to Favorites</button>
-            <!-- will create book in database and add that book to the users favorites -->
+            <div class="col float-end">
+                <button type="submit">Add to Favorites</button>
+                <!-- will create book in database and add that book to the users favorites -->
+            </div>
           </form>
     </div>
     <% }) %>

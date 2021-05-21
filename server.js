@@ -88,7 +88,7 @@ app.get('/home/:title', isLoggedIn, (req,res) => {
 });
 
 
-// Renders Search Page
+// Renders Search Page to search API for books
 app.get('/search', isLoggedIn, (req,res) => {
   res.render('search');
 })
