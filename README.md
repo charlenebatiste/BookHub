@@ -14,7 +14,7 @@
 
 ### General Info
 
-This project was my attemot at creating a fullstack application. The intention of BookHub was to creat an app where book lovers could search books, consolidate their favorite to a Bookshelf and interact with other users.
+This project was my first attempt at creating a fullstack application. The intention of BookHub was to create an app where book lovers could search books, consolidate their favorite to a Bookshelf and interact with other users.
 
 _Screenshot of a users Bookshelf_
 
