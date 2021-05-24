@@ -99,37 +99,22 @@ This project was created using:
 
 ## Default Routes
 
-| Method | Path | Location | Purpose
-
-| --- |:-------------:| ---------:| ------------:
-
-| GET | / | server.js | App Main page
-
-| GET | /auth/login | auth.js | Login form
-
-| GET | /auth/signup | auth.js | Signup form
-
-| GET | /home | server.js | Home page
-
-| GET | /new | server.js | Create A Post Page
-
-| GET | /home/:title | server.js | Individual Post Page
-
-| POST | /comments | server.js | Add Comment to a post
-
-| PUT | /edit | server.js | Edit a Comment
-
-| GET | /search | server.js | Search Page
-
-| GET | /books/:title | server.js | Results Page
-
-| GET | /profile | server.js | User Bookshelf Page
-
-| POST | /articles | server.js | Post New Article
-
-| POST | /addtofavorites | server.js | Add a Book to Bookshelf
-
-| DELETE | /remove | server.js | Remove a book from favorites
+| Method | Path            | Location  | Purpose                      |
+| ------ | --------------- | --------- | ---------------------------- |
+| GET    | /               | server.js | App Main page                |
+| GET    | /auth/login     | auth.js   | Login form                   |
+| GET    | /auth/signup    | auth.js   | Signup form                  |
+| GET    | /home           | server.js | Home page                    |
+| GET    | /new            | server.js | Create A Post Page           |
+| GET    | /home/:title    | server.js | Individual Post Page         |
+| POST   | /comments       | server.js | Add Comment to a post        |
+| PUT    | /edit           | server.js | Edit a Comment               |
+| GET    | /search         | server.js | Search Page                  |
+| GET    | /books/:title   | server.js | Results Page                 |
+| GET    | /profile        | server.js | User Bookshelf Page          |
+| POST   | /articles       | server.js | Post New Article             |
+| POST   | /addtofavorites | server.js | Add a Book to Bookshelf      |
+| DELETE | /remove         | server.js | Remove a book from favorites |
 
 ## Status
 
@@ -137,5 +122,5 @@ This project was created using:
 
 ## FUTURE CONSIDERATIONS
 
-1. Add models so users can add 'mustRead' books to their Bookshelf
+1. Add 'mustRead' model and routing so users can add books they want to read to their Bookshelf
 2. Create bookclubs that users can join to have live chats and private posts.
