@@ -15,9 +15,9 @@
         <h3 class="col"><u> Comments</u></h3>
     </div>
     <% if(allComments && allComments.length) { %>
-    <div class="row">
+    <div class="row text-end">
         <% allComments.forEach(comment => { %>
-                <p class="col-6 fs-5 mx-5"><%= comment.content %> - <%= comment.author %> </p>
+                <p class="col-10 fs-5 mx-5"><%= comment.content %> - <%= comment.author %> </p>
                 <% if (comment.userId === user.id) { %>
                   <form method="POST" action="/edit?_method=PUT">
                     <input type="hidden" name="postTitle" value="<%= postData.title%>">
