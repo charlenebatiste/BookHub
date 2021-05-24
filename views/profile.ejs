@@ -6,10 +6,10 @@
     <div class="row">
         <h3 class="col"><u> Favorite Books </u></h3>
     </div>
-    <div class="row">
+    <div class="row align-items-end">
         <% favoriteBooks.forEach(book => { %>
         <% if(book.dataValues.userId === user.id){ %>
-                <div class="col-4 favBook">
+                <div class="col-4 my-2 favBook">
                     <img src="<%= book.dataValues.bookCover%>" alt="cover of <%= book.dataValues.title %>">
                     <p class="fs-5"><%= book.dataValues.title %></p>
                     <p><%= book.dataValues.subtitle %></p>
