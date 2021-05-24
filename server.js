@@ -12,7 +12,6 @@ const db = require('./models');
 const methodOverride = require('method-override')
 
 const SECRET_SESSION = process.env.SECRET_SESSION;
-// console.log(SECRET_SESSION);
 
 // MIDDLEWARE
 
@@ -25,17 +24,16 @@ app.use(layouts);
 app.use(methodOverride(`_method`));
 
 app.use(session({
-  secret: SECRET_SESSION,    // What we give the user on our site as a session cookie
-  resave: false,             // Save the session even if it's modified, make this false
-  saveUninitialized: true    // If we have a new session, we save it, therefore making that true
+  secret: SECRET_SESSION,    
+  resave: false,             
+  saveUninitialized: true    
 }));
 
-app.use(flash());            // flash middleware
+app.use(flash());            
 
-app.use(passport.initialize());      // Initialize passport
-app.use(passport.session());         // Add a session
+app.use(passport.initialize());      
+app.use(passport.session());         
 
-// lines 30 and 31 need to be placed before the app.use that includes req.flash()
 
 app.use((req, res, next) => {
   console.log(res.locals);
@@ -106,7 +104,6 @@ app.get('/books/:title', isLoggedIn, (req, res) => {
     searchReturn.forEach( e => {
         bookData.push(e.volumeInfo)
     });
-    console.log(bookData)
     res.render('results', {bookData, user});
     // renders the books return page 
   });
@@ -146,7 +143,6 @@ app.post('/comments', isLoggedIn, (req,res)=> {
     postId: req.body.postId,
   })
   .then(comment => {
-    console.log(comment)
     res.redirect(`/home/` + req.body.postTitle)
   })
 })
@@ -177,7 +173,6 @@ app.put('/edit', (req,res) => {
     where: {id: req.body.commentId}
   })
   .then( updatedComment => {
-    console.log(`-----successfully updated comment-----`)
     res.redirect(`/home/` + req.body.postTitle)
   })
 })
