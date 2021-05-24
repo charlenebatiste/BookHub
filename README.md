@@ -9,6 +9,7 @@
 - [Technologies](#technologies)
 - [Known Issues](#known-issues)
 - [Process Work](#process-work)
+- [Default Routes](#default-routes)
 - [Status](#status)
 - [Future Considerations](#future-considerations)
 
@@ -31,14 +32,22 @@ _Screenshot of a users Bookshelf_
 This project was created using:
 
 - EJS
+- EJS Layouts
 - CSS Bootstrap
 - NodeJS
+- Axios
 - Express
+- Sequelize
 - Postgres
+- Bcrypt
+- Passport
+- Sessions
 
 ### Known Issues
 
-When fetching data from the API my code required the return of cover images that, on some occasionas, kept shutting down my server. When I inspected the data on a search I realized that some books did not have cover image data which was creating an error in the return. I resolved this by creating an 'if' statement in the forEach function to render a dummy image to the page if no image was attached to the search.
+1. Sequelize has question marks reserved as special characters so at the moment the post titles cannot have question marks included with causing an error in the code.
+
+2. When fetching data from the API my code required the return of cover images that, on some occasionas, kept shutting down my server. When I inspected the data on a search I realized that some books did not have cover image data which was creating an error in the return. I resolved this by creating an 'if' statement in the forEach function to render a dummy image to the page if no image was attached to the search.
 
 ```javascript
  <% bookData.forEach(book => { %>
@@ -83,9 +92,44 @@ When fetching data from the API my code required the return of cover images that
 
 1. Created a user model and added authentication using passport, bcrypt and flash for user security.
 2. Built ERD for database organization and created wireframes for each page to determine views files.
-3. Built GET routes to all views files and seeded the database.
-4. Utilized the Google Books API to search books by title, author or category and rendered search results to the page.
-5. Built forms that create, update, and/or delete elements in the database.
+3. Built post, comment & book models to add data to database.
+4. Built GET routes to all views files and seeded the database.
+5. Utilized the Google Books API to search books by title, author or category and rendered search results to the page.
+6. Built forms that create, update, and/or delete elements in the database.
+
+## Default Routes
+
+| Method | Path | Location | Purpose
+
+| --- |:-------------:| ---------:| ------------:
+
+| GET | / | server.js | App Main page
+
+| GET | /auth/login | auth.js | Login form
+
+| GET | /auth/signup | auth.js | Signup form
+
+| GET | /home | server.js | Home page
+
+| GET | /new | server.js | Create A Post Page
+
+| GET | /home/:title | server.js | Individual Post Page
+
+| POST | /comments | server.js | Add Comment to a post
+
+| PUT | /edit | server.js | Edit a Comment
+
+| GET | /search | server.js | Search Page
+
+| GET | /books/:title | server.js | Results Page
+
+| GET | /profile | server.js | User Bookshelf Page
+
+| POST | /articles | server.js | Post New Article
+
+| POST | /addtofavorites | server.js | Add a Book to Bookshelf
+
+| DELETE | /remove | server.js | Remove a book from favorites
 
 ## Status
 
