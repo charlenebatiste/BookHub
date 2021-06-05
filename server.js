@@ -51,7 +51,6 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-
 // Renders Homepage
 app.get('/home', isLoggedIn, (req, res) => {
     db.post.findAll()
@@ -62,6 +61,10 @@ app.get('/home', isLoggedIn, (req, res) => {
             })
             res.render('home', { allPosts });
         })
+        .catch((error) => {
+            res.status(400).render('404')
+            // render 404 page if an error occurs
+        })
 });
 
 // Renders Page to Create a New Post
@@ -69,6 +72,8 @@ app.get('/new', isLoggedIn, (req, res) => {
     const user = req.user.get()
     res.render('new', { user })
 })
+
+
 
 // Renders Info on a Specific Post to the Page
 app.get('/home/:title', isLoggedIn, (req, res) => {
@@ -82,6 +87,11 @@ app.get('/home/:title', isLoggedIn, (req, res) => {
             let postData = thisPost.dataValues
             let allComments = thisPost.dataValues.comments
             res.render('show', { postData, allComments, user });
+        })
+        .catch((error) => {
+            console.log('Error in GET /', error)
+            res.status(400).render('404')
+            // render 404 page if an error occurs
         })
 });
 
@@ -107,6 +117,7 @@ app.get('/books/:title', isLoggedIn, (req, res) => {
         res.render('results', { bookData, user });
         // renders the books return page 
     });
+
 });
 
 // Renders User Profile (aka bookshelf)
@@ -116,7 +127,10 @@ app.get('/profile', isLoggedIn, (req, res) => {
         .then(favoriteBooks => {
             res.render('profile', { favoriteBooks, user });
         })
-
+        .catch((error) => {
+            res.status(400).render('404')
+            // render 404 page if an error occurs
+        })
 });
 
 // POST ROUTES
@@ -132,6 +146,10 @@ app.post('/articles', isLoggedIn, (req, res) => {
         .then(post => {
             res.redirect('/home')
         })
+        .catch((error) => {
+            res.status(400).render('404')
+            // render 404 page if an error occurs
+        })
 })
 
 // Add comments to a post
@@ -145,6 +163,10 @@ app.post('/comments', isLoggedIn, (req, res) => {
         .then(comment => {
             res.redirect(`/home/` + req.body.postTitle)
         })
+        .catch((error) => {
+            res.status(400).render('404')
+            // render 404 page if an error occurs
+        })
 })
 
 // Add a book to favorites list
@@ -153,6 +175,10 @@ app.post('/addtofavorites', isLoggedIn, function (req, res) {
         .then(b => {
             res.redirect('/profile')
             // profile page is bookshelf
+        })
+        .catch((error) => {
+            res.status(400).render('404')
+            // render 404 page if an error occurs
         })
 })
 
@@ -174,6 +200,10 @@ app.put('/edit', isLoggedIn, (req, res) => {
         })
         .then(updatedComment => {
             res.redirect(`/home/` + req.body.postTitle)
+        })
+        .catch((error) => {
+            res.status(400).render('404')
+            // render 404 page if an error occurs
         })
 })
 
