@@ -177,6 +177,10 @@ app.put('/edit', isLoggedIn, (req, res) => {
         })
 })
 
+/* ROUTING FALLBACK */
+
+app.get("/*", (req, res) => res.render("404", { url: req.path }));
+
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {

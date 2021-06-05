@@ -1,30 +1,30 @@
 * {
-  box-sizing: border-box;
-  font-family: 'Newsreader', serif;
+	box-sizing: border-box;
+	font-family: "Newsreader", serif;
 }
 
-body{
-  background-color: #ffbca4;
+body {
+	background-color: #ffbca4;
 }
 
 header {
-  background-color: #ffd3a4;
+	background-color: #ffd3a4;
 }
 
 .navbar li {
-  font-size: 1.2em;
-  list-style-type: none;
+	font-size: 1.2em;
+	list-style-type: none;
 }
 
 .userInput-style {
-  background-color: #d2e5fac2;
-  border: solid 1px #3b6592;
+	background-color: #d2e5fac2;
+	border: solid 1px #3b6592;
 }
 
-.postContent{
-  background-color: #fdf5ec;
+.postContent {
+	background-color: #fdf5ec;
 }
 
-.bookReturn{
-  border: solid 1px black;
+.bookReturn {
+	border: solid 1px black;
 }
