@@ -4,14 +4,14 @@
 
 ## Table of contents
 
-- [General Info](general-info)
-- [Setup](#setup)
-- [Technologies](#technologies)
-- [Known Issues](#known-issues)
-- [Process Work](#process-work)
-- [Default Routes](#default-routes)
-- [Status](#status)
-- [Future Considerations](#future-considerations)
+-   [General Info](general-info)
+-   [Setup](#setup)
+-   [Technologies](#technologies)
+-   [Known Issues](#known-issues)
+-   [Process Work](#process-work)
+-   [Default Routes](#default-routes)
+-   [Status](#status)
+-   [Future Considerations](#future-considerations)
 
 ### General Info
 
@@ -31,17 +31,17 @@ _Screenshot of a users Bookshelf_
 
 This project was created using:
 
-- EJS
-- EJS Layouts
-- CSS Bootstrap
-- NodeJS
-- Axios
-- Express
-- Sequelize
-- Postgres
-- Bcrypt
-- Passport
-- Sessions
+-   EJS
+-   EJS Layouts
+-   CSS Bootstrap
+-   NodeJS
+-   Axios
+-   Express
+-   Sequelize
+-   Postgres
+-   Bcrypt
+-   Passport
+-   Sessions
 
 ### Known Issues
 
@@ -102,6 +102,7 @@ This project was created using:
 | Method | Path            | Location  | Purpose                      |
 | ------ | --------------- | --------- | ---------------------------- |
 | GET    | /               | server.js | App Main page                |
+| GET    | /\*             | server.js | 404 page                     |
 | GET    | /auth/login     | auth.js   | Login form                   |
 | GET    | /auth/signup    | auth.js   | Signup form                  |
 | GET    | /home           | server.js | Home page                    |
